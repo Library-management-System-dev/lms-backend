@@ -36,6 +36,27 @@ A comprehensive Library Management System built with Spring Boot, featuring book
 
 ## 🚀 Installation & Setup
 
+### Quick Start (Recommended)
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Library-management-System-dev/lms-backend.git
+cd lms-backend
+
+# 2. Copy .env.example to .env
+cp .env.example .env
+
+# 3. Update .env with your Neon PostgreSQL credentials
+# See NEON_SETUP.md for detailed instructions
+
+# 4. Run the startup script
+./start-server.sh
+```
+
+The application will start on `http://localhost:8080`
+
+### Manual Setup
+
 ### 1. Clone the Repository
 
 ```bash
@@ -43,19 +64,22 @@ git clone https://github.com/Library-management-System-dev/lms-backend.git
 cd lms-backend
 ```
 
-### 2. Database Setup
+### 2. Database Setup - Neon PostgreSQL (Free Tier)
 
-Create a PostgreSQL database or use [Neon](https://neon.tech) (recommended - free tier available).
+1. Go to [https://neon.tech](https://neon.tech) and create a free account
+2. Create a new project
+3. Get your connection details from the dashboard
+4. See **NEON_SETUP.md** for detailed step-by-step instructions
 
 ### 3. Environment Variables
 
 Create a `.env` file in the root directory:
 
 ```properties
-# Database
-DB_URL=jdbc:postgresql://your-host:5432/your-database?sslmode=require
-DB_USERNAME=your_username
-DB_PASSWORD=your_password
+# Database - Neon PostgreSQL
+DB_URL=jdbc:postgresql://your-neon-host/neondb?sslmode=require
+DB_USERNAME=your_neon_username
+DB_PASSWORD=your_neon_password
 
 # JWT
 JWT_SECRET_KEY=your_secure_jwt_secret_key_min_32_chars
@@ -68,11 +92,9 @@ MAIL_PASSWORD=your_gmail_app_password
 RAZORPAY_KEY_ID=your_razorpay_key_id
 RAZORPAY_KEY_SECRET=your_razorpay_key_secret
 RAZORPAY_CALLBACK_URL=http://localhost:5173
-
-# Admin User
-ADMIN_EMAIL=admin@example.com
-ADMIN_PASSWORD=your_secure_admin_password
 ```
+
+**Note:** `.env.example` is provided as a template.
 
 ### 4. Build and Run
 
@@ -80,14 +102,20 @@ ADMIN_PASSWORD=your_secure_admin_password
 # Load environment variables
 export $(cat .env | grep -v '^#' | xargs)
 
-# Build the project
-mvn clean install
+# Clean and build
+mvn clean install -DskipTests
 
 # Run the application
 mvn spring-boot:run
 ```
 
 The application will start on `http://localhost:8080`
+
+### 5. Default Admin Account
+
+Auto-created on first startup:
+- **Email:** `loharkrish95@gmail.com`
+- **Password:** `Krish@123`
 
 ## 📚 API Documentation
 

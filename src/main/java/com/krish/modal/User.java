@@ -61,7 +61,7 @@ public class User {
         if (authProvider == null) {
             authProvider = AuthProvider.LOCAL;
         }
-        if (email == null) {
+        if (email != null) {
             email = email.trim().toLowerCase(Locale.ROOT);
         }
     }
